@@ -4,4 +4,4 @@
 
 Edit `index.html` to update the bio, work and project links. Replace `resume.pdf` to update the résumé. GitHub Pages publishes from the root of the `main` branch.
 
-The portfolio sends a `link_click` event to Umami with its destination when the tracker is loaded. Email and phone clicks use labels and hyperlink destinations exclude query strings.
+The Umami Cloud tracker in `index.html` records pageviews and visit sources on `shivamgupta021.github.io`. Each portfolio link sends a `link_click` event with its destination. Email and phone clicks use labels and hyperlink destinations exclude query strings. If you change the site’s domain, update it in Umami and in the tracker’s `data-domains` attribute.
