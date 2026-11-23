@@ -1,0 +1,293 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --paper: light-dark(#ffffff, #111111);
+  --text: light-dark(#171717, #f4f4f4);
+  --muted: light-dark(#505050, #b8b8b8);
+  --rule: light-dark(#dedede, #383838);
+  --track: light-dark(#efefef, #232323);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  margin: 0;
+  font: 1.0625rem/1.45 "Bricolage Grotesque", system-ui, sans-serif;
+  font-optical-sizing: auto;
+}
+
+.page {
+  --top: clamp(2.2rem, min(6vw, 7.5vh), 4.75rem);
+  position: relative;
+  max-width: 53.5rem;
+  padding: var(--top) 1.5rem 1.25rem;
+  margin-inline: auto;
+}
+
+.portfolio-page {
+  --top: clamp(2.5rem, min(12vw, calc(16vh - 3.8rem)), 9rem);
+  --section-gap: clamp(1.6rem, calc(9vh - 2.75rem), 4.5rem);
+  --heading-gap: clamp(0.95rem, calc(4vh - 1rem), 1.75rem);
+  max-width: 57rem;
+}
+
+h1, h2, p, ul {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 2.375rem);
+  font-weight: 620;
+  letter-spacing: -0.027em;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 620;
+  letter-spacing: -0.027em;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 17.5rem);
+  align-items: start;
+  gap: clamp(2.25rem, 6.5vw, 5rem);
+}
+
+.role-note {
+  color: var(--muted);
+  font-size: 1.16rem;
+  line-height: 1.42;
+  max-width: 52ch;
+  margin-block: var(--heading-gap) 1rem;
+}
+
+.role-note strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.resume-link {
+  margin-bottom: var(--section-gap);
+}
+
+.portfolio section + section {
+  margin-top: var(--section-gap);
+}
+
+.entries {
+  padding: 0;
+  list-style: none;
+}
+
+.entries li {
+  padding-block: 0.45rem;
+}
+
+.entries li:first-child {
+  padding-top: 0;
+}
+
+.entries li:last-child {
+  padding-bottom: 0;
+}
+
+.entry-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.65rem;
+  margin-bottom: 0.18rem;
+}
+
+.entries a {
+  font-weight: 650;
+}
+
+.job-title {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.entries p {
+  color: var(--muted);
+}
+
+.projects li {
+  display: grid;
+  grid-template-columns: 8ch minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: 0.48rem;
+}
+
+.projects li a {
+  justify-self: start;
+}
+
+.about {
+  margin-top: 0.2rem;
+}
+
+.about h2 {
+  margin-right: 4rem;
+  margin-bottom: var(--heading-gap);
+}
+
+.about p {
+  color: var(--muted);
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.8rem;
+  padding: 0;
+  list-style: none;
+  margin-top: var(--heading-gap);
+  padding-top: var(--heading-gap);
+  border-top: 1px solid var(--rule);
+}
+
+a {
+  color: var(--text);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--muted);
+}
+
+a:hover {
+  color: var(--muted);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible, .theme:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.theme {
+  position: absolute;
+  inset-block-start: calc(var(--top) - 0.16rem);
+  inset-inline-end: 1.5rem;
+  display: grid;
+  place-items: center;
+  width: 3.6rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme[hidden] {
+  display: none;
+}
+
+.theme-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 1.85rem;
+  border: 1px solid var(--rule);
+  border-radius: inherit;
+  background: var(--track);
+  font: 1rem/1 "Apple Symbols", "Segoe UI Symbol", system-ui, sans-serif;
+}
+
+.theme:hover .theme-track {
+  border-color: var(--muted);
+}
+
+.theme-track::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  width: calc(50% - 4px);
+  height: calc(100% - 6px);
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--rule);
+  transition: transform 160ms ease;
+}
+
+.theme[aria-pressed="true"] .theme-track::before {
+  transform: translateX(calc(100% + 2px));
+}
+
+.theme-track span {
+  position: relative;
+}
+
+.theme[aria-pressed="false"] .theme-track span:first-child,
+.theme[aria-pressed="true"] .theme-track span:last-child {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-track::before {
+    transition: none;
+  }
+}
+
+@media (max-width: 45rem) {
+  .portfolio-page {
+    --top: clamp(2.15rem, 6vw, 3.5rem);
+    --section-gap: 1.85rem;
+    --heading-gap: 0.9rem;
+  }
+
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--section-gap);
+  }
+
+  .about {
+    margin-top: 0;
+  }
+
+  .about h2 {
+    margin-right: 0;
+  }
+
+  .about p {
+    max-width: 48ch;
+  }
+}
+
+@media (max-width: 30rem) {
+  .page {
+    padding-inline: 1.25rem;
+  }
+
+  .theme {
+    inset-inline-end: 1.25rem;
+  }
+
+}
+
+@media (min-width: 45.01rem) and (min-height: 58rem) {
+  .portfolio-page {
+    line-height: 1.6;
+  }
+}
