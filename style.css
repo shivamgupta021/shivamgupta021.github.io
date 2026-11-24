@@ -236,7 +236,7 @@ h2 {
 
 .projects li {
   display: grid;
-  grid-template-columns: 8ch minmax(0, 1fr);
+  grid-template-columns: 9rem minmax(0, 1fr);
   align-items: baseline;
   gap: 0.65rem;
 }
@@ -302,6 +302,17 @@ h2 {
 .theme[aria-pressed="true"] .theme-track span:first-child,
 .theme[aria-pressed="false"] .theme-track span:last-child {
   color: var(--text);
+}
+
+@media (max-width: 36rem) {
+  .projects {
+    gap: 0.85rem;
+  }
+
+  .projects li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.12rem;
+  }
 }
 
 @media (max-width: 24rem) {
