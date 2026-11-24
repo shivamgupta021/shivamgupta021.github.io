@@ -2,7 +2,7 @@ const themeButton = document.querySelector(".theme");
 const root = document.documentElement;
 
 function isDark() {
-  return root.dataset.theme === "dark";
+  return root.dataset.theme !== "light";
 }
 
 function updateThemeButton() {

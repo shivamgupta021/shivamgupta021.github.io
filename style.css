@@ -7,7 +7,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --paper: light-dark(#fff, #111);
   --text: light-dark(#171819, #f4f4f4);
   --muted: light-dark(#515558, #b8b8b8);
@@ -17,8 +17,8 @@
   --gutter: clamp(1.125rem, 5vw, 2.5rem);
 }
 
-:root[data-theme="dark"] {
-  color-scheme: dark;
+:root[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -31,8 +31,8 @@ body {
 }
 
 .perspective-grid {
-  --grid-cell: clamp(2.5rem, 5vw, 4.5rem);
-  --grid-line: light-dark(rgb(18 18 18 / 0.12), rgb(255 255 255 / 0.12));
+  --grid-cell: clamp(2.25rem, 4.6vw, 4rem);
+  --grid-line: light-dark(rgb(18 18 18 / 0.14), rgb(255 255 255 / 0.16));
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -58,14 +58,14 @@ body {
   inset-block-start: 0;
   transform-origin: center top;
   transform: perspective(125vh) rotateX(-52deg);
-  mask-image: linear-gradient(to bottom, #000 16%, rgb(0 0 0 / 0.38) 45%, transparent 93%);
+  mask-image: linear-gradient(to bottom, #000 16%, rgb(0 0 0 / 0.44) 50%, transparent 95%);
 }
 
 .perspective-grid::after {
   inset-block-end: 0;
   transform-origin: center bottom;
   transform: perspective(125vh) rotateX(52deg);
-  mask-image: linear-gradient(to top, #000 16%, rgb(0 0 0 / 0.38) 45%, transparent 93%);
+  mask-image: linear-gradient(to top, #000 16%, rgb(0 0 0 / 0.44) 50%, transparent 95%);
 }
 
 h1, h2, p, ul {

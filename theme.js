@@ -4,5 +4,5 @@ try {
     document.documentElement.dataset.theme = theme;
   }
 } catch {
-  // Use the default light theme when storage is unavailable.
+  // Use the default dark theme when storage is unavailable.
 }
