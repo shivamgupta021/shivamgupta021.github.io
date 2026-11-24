@@ -23,6 +23,24 @@ themeButton.addEventListener("click", () => {
 updateThemeButton();
 themeButton.hidden = false;
 
+const localTime = document.querySelector("#local-time");
+const indiaTime = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Kolkata",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+});
+
+function updateLocalTime() {
+  const time = indiaTime.format(new Date());
+  localTime.dateTime = time;
+  localTime.textContent = time;
+}
+
+updateLocalTime();
+localTime.hidden = false;
+setInterval(updateLocalTime, 15_000);
+
 function trackLink(event) {
   const link = event.target.closest("a[href]");
   if (!link) return;

@@ -8,11 +8,13 @@
 
 :root {
   color-scheme: light;
-  --paper: light-dark(#ffffff, #111111);
-  --text: light-dark(#171717, #f4f4f4);
-  --muted: light-dark(#505050, #b8b8b8);
-  --rule: light-dark(#dedede, #383838);
-  --track: light-dark(#efefef, #232323);
+  --paper: light-dark(#fff, #111);
+  --text: light-dark(#171819, #f4f4f4);
+  --muted: light-dark(#515558, #b8b8b8);
+  --rule: light-dark(#e4e6e8, #383838);
+  --surface: light-dark(#f2f3f4, #232323);
+  --control-border: light-dark(#73777a, #8c8c8c);
+  --gutter: clamp(1.125rem, 5vw, 2.5rem);
 }
 
 :root[data-theme="dark"] {
@@ -23,202 +25,12 @@ body {
   background: var(--paper);
   color: var(--text);
   margin: 0;
-  font: 1.0625rem/1.45 "Bricolage Grotesque", system-ui, sans-serif;
+  font: 1.125rem/1.6 "Bricolage Grotesque", system-ui, sans-serif;
   font-optical-sizing: auto;
-}
-
-.page {
-  --top: clamp(2.2rem, min(6vw, 7.5vh), 4.75rem);
-  position: relative;
-  max-width: 53.5rem;
-  padding: var(--top) 1.5rem 1.25rem;
-  margin-inline: auto;
-}
-
-.portfolio-page {
-  --top: clamp(2.5rem, min(12vw, calc(16vh - 3.8rem)), 9rem);
-  --section-gap: clamp(1.6rem, calc(9vh - 2.75rem), 4.5rem);
-  --heading-gap: clamp(0.95rem, calc(4vh - 1rem), 1.75rem);
-  max-width: 57rem;
 }
 
 h1, h2, p, ul {
   margin: 0;
-}
-
-h1 {
-  font-size: clamp(2rem, 3vw, 2.375rem);
-  font-weight: 620;
-  letter-spacing: -0.027em;
-  line-height: 1;
-}
-
-h2 {
-  font-size: 1.35rem;
-  font-weight: 620;
-  letter-spacing: -0.027em;
-  line-height: 1.25;
-  margin-bottom: 0.85rem;
-}
-
-.columns {
-  display: grid;
-  grid-template-areas:
-    "intro about"
-    "work about"
-    "projects about";
-  grid-template-columns: minmax(0, 1fr) minmax(0, 17.5rem);
-  align-items: start;
-  gap: var(--section-gap) clamp(2.25rem, 6.5vw, 5rem);
-}
-
-.intro {
-  grid-area: intro;
-}
-
-.portfolio-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.profile-links {
-  display: flex;
-  align-items: center;
-  height: 2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.profile-links a {
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.375rem;
-  color: var(--muted);
-}
-
-.profile-links a:hover {
-  color: var(--text);
-  background: var(--track);
-}
-
-.profile-links svg {
-  display: block;
-  width: 1.125rem;
-  height: 1.125rem;
-  fill: currentColor;
-}
-
-.work-experience {
-  grid-area: work;
-}
-
-.side-projects {
-  grid-area: projects;
-}
-
-.role-note {
-  color: var(--muted);
-  font-size: 1.16rem;
-  line-height: 1.42;
-  max-width: 52ch;
-  margin-block: var(--heading-gap) 1rem;
-}
-
-.role-note strong {
-  color: var(--text);
-  font-weight: 650;
-}
-
-.resume-button {
-  display: inline-grid;
-  place-items: center;
-  min-height: 2.2rem;
-  padding-inline: 0.85rem;
-  border-radius: 0.375rem;
-  background: var(--text);
-  color: var(--paper);
-  font-size: 0.875rem;
-  font-weight: 650;
-  line-height: 1.25;
-  text-decoration: none;
-}
-
-.resume-button:hover {
-  background: var(--muted);
-  color: var(--paper);
-}
-
-@media (pointer: coarse) {
-  .resume-button {
-    min-height: 2.75rem;
-  }
-}
-
-.entries {
-  padding: 0;
-  list-style: none;
-}
-
-.entries li {
-  padding-block: 0.45rem;
-}
-
-.entries li:first-child {
-  padding-top: 0;
-}
-
-.entries li:last-child {
-  padding-bottom: 0;
-}
-
-.entry-heading {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 0.65rem;
-  margin-bottom: 0.18rem;
-}
-
-.entries a {
-  font-weight: 650;
-}
-
-.job-title {
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-
-.entries p {
-  color: var(--muted);
-}
-
-.projects li {
-  display: grid;
-  grid-template-columns: 8ch minmax(0, 1fr);
-  align-items: baseline;
-  gap: 0.75rem;
-  padding-block: 0.48rem;
-}
-
-.projects li a {
-  justify-self: start;
-}
-
-.about {
-  grid-area: about;
-  margin-top: 0.2rem;
-}
-
-.about h2 {
-  margin-right: 4rem;
-  margin-bottom: var(--heading-gap);
-}
-
-.about p {
-  color: var(--muted);
 }
 
 a {
@@ -233,18 +45,188 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
-a:focus-visible, .theme:focus-visible {
+a:focus-visible, button:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 3px;
 }
 
-.theme {
-  position: absolute;
-  inset-block-start: calc(var(--top) - 0.16rem);
-  inset-inline-end: 1.5rem;
+.utility, .page {
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.utility,
+.utility-controls,
+.time-zone {
+  display: flex;
+  align-items: center;
+}
+
+.utility {
+  max-width: 47rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding-block-start: clamp(0.75rem, 3vw, 1.85rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.time-zone {
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-zone span {
+  margin-inline-end: 0.3rem;
+}
+
+.utility abbr {
+  text-decoration: none;
+}
+
+.utility-controls {
+  gap: 0.95rem;
+}
+
+.page {
+  max-width: min(42rem, 67ch);
+  padding-block: clamp(1.8rem, 5vw, 3.75rem) clamp(2.5rem, 8vw, 5rem);
+}
+
+.portfolio-heading {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.35rem, 2vw, 0.85rem);
+}
+
+h1 {
+  font-size: clamp(2.35rem, 6vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.07;
+}
+
+.profile-links {
+  display: flex;
+  flex: none;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-links a {
   display: grid;
   place-items: center;
-  width: 3.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+  color: var(--muted);
+}
+
+.profile-links a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.profile-links svg {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: currentColor;
+}
+
+.role-note {
+  max-width: 58ch;
+  margin-block: 0.85rem 1.1rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.role-note strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.resume-button {
+  display: inline-grid;
+  min-height: 2.75rem;
+  place-items: center;
+  padding-inline: 1rem;
+  border-radius: 0.5rem;
+  background: var(--text);
+  color: var(--paper);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.resume-button:hover {
+  background: var(--muted);
+  color: var(--paper);
+}
+
+.page section {
+  margin-block-start: clamp(2.25rem, 5vw, 3.5rem);
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+h2 {
+  margin-block-end: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.022em;
+  line-height: 1.25;
+}
+
+.entries {
+  display: grid;
+  gap: 1.15rem;
+  padding: 0;
+  list-style: none;
+}
+
+.entry-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.65rem;
+  margin-block-end: 0.15rem;
+}
+
+.entries a {
+  font-weight: 650;
+}
+
+.job-title {
+  font-size: 0.9375rem;
+}
+
+.job-title, .about p, .entries p {
+  color: var(--muted);
+}
+
+.projects {
+  gap: 0.65rem;
+}
+
+.projects li {
+  display: grid;
+  grid-template-columns: 8ch minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.projects li a {
+  justify-self: start;
+}
+
+.theme {
+  display: grid;
+  place-items: center;
+  width: 3.45rem;
   height: 2.75rem;
   padding: 0;
   border: 0;
@@ -265,15 +247,11 @@ a:focus-visible, .theme:focus-visible {
   place-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: 1.85rem;
-  border: 1px solid var(--rule);
+  height: 1.75rem;
+  border: 1px solid var(--control-border);
   border-radius: inherit;
-  background: var(--track);
+  background: var(--surface);
   font: 1rem/1 "Apple Symbols", "Segoe UI Symbol", system-ui, sans-serif;
-}
-
-.theme:hover .theme-track {
-  border-color: var(--muted);
 }
 
 .theme-track::before {
@@ -286,7 +264,7 @@ a:focus-visible, .theme:focus-visible {
   border-radius: 999px;
   background: var(--paper);
   box-shadow: 0 0 0 1px var(--rule);
-  transition: transform 160ms ease;
+  transition: transform 150ms ease;
 }
 
 .theme[aria-pressed="true"] .theme-track::before {
@@ -305,54 +283,5 @@ a:focus-visible, .theme:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .theme-track::before {
     transition: none;
-  }
-}
-
-@media (max-width: 45rem) {
-  .portfolio-page {
-    --top: clamp(2.15rem, 6vw, 3.5rem);
-    --section-gap: 1.85rem;
-    --heading-gap: 0.9rem;
-  }
-
-  .columns {
-    grid-template-areas:
-      "intro"
-      "about"
-      "work"
-      "projects";
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .about {
-    margin-top: 0;
-  }
-
-  .about h2 {
-    margin-right: 0;
-  }
-
-  .about p {
-    max-width: 48ch;
-  }
-}
-
-@media (max-width: 30rem) {
-  .page {
-    padding-inline: 1.25rem;
-  }
-
-  .portfolio-heading {
-    gap: 0.375rem;
-  }
-
-  .theme {
-    inset-inline-end: 1.25rem;
-  }
-}
-
-@media (min-width: 45.01rem) and (min-height: 58rem) {
-  .portfolio-page {
-    line-height: 1.6;
   }
 }
