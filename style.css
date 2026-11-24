@@ -38,15 +38,15 @@ body {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse, rgb(0 0 0 / 0.22) 18%, rgb(0 0 0 / 0.5) 52%, #000 94%);
+  mask-image: radial-gradient(ellipse, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.42) 52%, #000 94%);
 }
 
 .perspective-grid::before,
 .perspective-grid::after {
   content: "";
   position: absolute;
-  inset-inline: -75%;
-  block-size: 300%;
+  inset-inline: -65%;
+  block-size: 230%;
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
@@ -57,15 +57,15 @@ body {
 .perspective-grid::before {
   inset-block-start: 0;
   transform-origin: center top;
-  transform: perspective(135vh) rotateX(-52deg);
-  mask-image: linear-gradient(to bottom, #000 15%, rgb(0 0 0 / 0.66) 52%, transparent 87%);
+  transform: perspective(125vh) rotateX(-52deg);
+  mask-image: linear-gradient(to bottom, #000 16%, rgb(0 0 0 / 0.44) 50%, transparent 95%);
 }
 
 .perspective-grid::after {
   inset-block-end: 0;
   transform-origin: center bottom;
-  transform: perspective(135vh) rotateX(52deg);
-  mask-image: linear-gradient(to top, #000 15%, rgb(0 0 0 / 0.66) 52%, transparent 87%);
+  transform: perspective(125vh) rotateX(52deg);
+  mask-image: linear-gradient(to top, #000 16%, rgb(0 0 0 / 0.44) 50%, transparent 95%);
 }
 
 h1, h2, p, ul {
