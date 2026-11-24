@@ -50,21 +50,11 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
 }
 
-.utility, .page {
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-.utility {
-  display: flex;
-  justify-content: flex-end;
-  max-width: 47rem;
-  padding-block-start: clamp(0.75rem, 3vw, 1.85rem);
-}
-
 .page {
   max-width: min(42rem, 67ch);
-  padding-block: clamp(1.8rem, 5vw, 3.75rem) clamp(2.5rem, 8vw, 5rem);
+  margin-inline: auto;
+  padding-block: clamp(2.4rem, 8vw, 7rem) clamp(2.5rem, 8vw, 5rem);
+  padding-inline: var(--gutter);
 }
 
 .portfolio-heading {
@@ -197,9 +187,11 @@ h2 {
 
 .theme {
   display: grid;
+  flex: none;
   place-items: center;
   width: 3.45rem;
   height: 2.75rem;
+  margin-inline-start: auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -250,6 +242,12 @@ h2 {
 .theme[aria-pressed="false"] .theme-track span:first-child,
 .theme[aria-pressed="true"] .theme-track span:last-child {
   color: var(--text);
+}
+
+@media (max-width: 24rem) {
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
