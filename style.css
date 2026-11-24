@@ -149,7 +149,13 @@ h1 {
   color: var(--muted);
 }
 
-.intro-copy strong {
+.intro-lead {
+  color: var(--text);
+  font-size: clamp(1.15rem, 2.1vw, 1.35rem);
+  line-height: 1.4;
+}
+
+.intro-copy strong, .entries strong {
   color: var(--text);
   font-weight: 650;
 }
