@@ -30,42 +30,42 @@ body {
   font-optical-sizing: auto;
 }
 
-.dotted-glow {
-  --dot-spacing: 1.25rem;
-  --dot-color: light-dark(rgb(55 70 89 / 0.24), rgb(155 173 195 / 0.22));
-  --glow-color: light-dark(rgb(71 111 156 / 0.48), rgb(123 164 215 / 0.58));
+.perspective-grid {
+  --grid-cell: clamp(2.5rem, 5vw, 4.5rem);
+  --grid-line: light-dark(rgb(18 18 18 / 0.12), rgb(255 255 255 / 0.12));
   position: fixed;
   inset: 0;
   z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(circle, var(--dot-color) 0.75px, transparent 1.5px)
-    0 0 / var(--dot-spacing) var(--dot-spacing);
-  mask-image: radial-gradient(ellipse at 50% 40%, transparent 25%, rgb(0 0 0 / 0.22) 55%, #000 95%);
+  mask-image: radial-gradient(ellipse, rgb(0 0 0 / 0.12) 18%, rgb(0 0 0 / 0.42) 52%, #000 94%);
 }
 
-.dotted-glow::before,
-.dotted-glow::after {
+.perspective-grid::before,
+.perspective-grid::after {
   content: "";
   position: absolute;
-  inset: 0;
-  opacity: 0.38;
-  mask: radial-gradient(circle, #000 0.75px, transparent 1.5px)
-    0 0 / var(--dot-spacing) var(--dot-spacing);
-  animation: dot-glow 11s ease-in-out infinite alternate;
+  inset-inline: -65%;
+  block-size: 230%;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+  background-position: center;
 }
 
-.dotted-glow::before {
-  background: radial-gradient(ellipse 36rem 27rem at 12% 18%, var(--glow-color), transparent 85%);
+.perspective-grid::before {
+  inset-block-start: 0;
+  transform-origin: center top;
+  transform: perspective(125vh) rotateX(-52deg);
+  mask-image: linear-gradient(to bottom, #000 16%, rgb(0 0 0 / 0.38) 45%, transparent 93%);
 }
 
-.dotted-glow::after {
-  background: radial-gradient(ellipse 39rem 28rem at 88% 76%, var(--glow-color), transparent 85%);
-  animation-delay: -11s;
-}
-
-@keyframes dot-glow {
-  from { opacity: 0.16; }
-  to { opacity: 0.76; }
+.perspective-grid::after {
+  inset-block-end: 0;
+  transform-origin: center bottom;
+  transform: perspective(125vh) rotateX(52deg);
+  mask-image: linear-gradient(to top, #000 16%, rgb(0 0 0 / 0.38) 45%, transparent 93%);
 }
 
 h1, h2, p, ul {
@@ -290,17 +290,13 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dotted-glow::before, .dotted-glow::after {
-    animation: none;
-  }
-
   .theme-track::before {
     transition: none;
   }
 }
 
 @media (forced-colors: active) {
-  .dotted-glow {
+  .perspective-grid {
     display: none;
   }
 }
