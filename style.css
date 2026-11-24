@@ -22,11 +22,50 @@
 }
 
 body {
+  isolation: isolate;
   background: var(--paper);
   color: var(--text);
   margin: 0;
   font: 1.125rem/1.6 "Bricolage Grotesque", system-ui, sans-serif;
   font-optical-sizing: auto;
+}
+
+.dotted-glow {
+  --dot-spacing: 1.25rem;
+  --dot-color: light-dark(rgb(55 70 89 / 0.24), rgb(155 173 195 / 0.22));
+  --glow-color: light-dark(rgb(71 111 156 / 0.48), rgb(123 164 215 / 0.58));
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--dot-color) 0.75px, transparent 1.5px)
+    0 0 / var(--dot-spacing) var(--dot-spacing);
+  mask-image: radial-gradient(ellipse at 50% 40%, transparent 25%, rgb(0 0 0 / 0.22) 55%, #000 95%);
+}
+
+.dotted-glow::before,
+.dotted-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.38;
+  mask: radial-gradient(circle, #000 0.75px, transparent 1.5px)
+    0 0 / var(--dot-spacing) var(--dot-spacing);
+  animation: dot-glow 11s ease-in-out infinite alternate;
+}
+
+.dotted-glow::before {
+  background: radial-gradient(ellipse 36rem 27rem at 12% 18%, var(--glow-color), transparent 85%);
+}
+
+.dotted-glow::after {
+  background: radial-gradient(ellipse 39rem 28rem at 88% 76%, var(--glow-color), transparent 85%);
+  animation-delay: -11s;
+}
+
+@keyframes dot-glow {
+  from { opacity: 0.16; }
+  to { opacity: 0.76; }
 }
 
 h1, h2, p, ul {
@@ -251,7 +290,17 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .dotted-glow::before, .dotted-glow::after {
+    animation: none;
+  }
+
   .theme-track::before {
     transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .dotted-glow {
+    display: none;
   }
 }
