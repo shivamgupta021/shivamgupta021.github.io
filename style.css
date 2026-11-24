@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  font-family: "Aspekta";
+  src: url("/fonts/aspekta-variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
@@ -26,8 +26,7 @@ body {
   background: var(--paper);
   color: var(--text);
   margin: 0;
-  font: 1.125rem/1.6 "Bricolage Grotesque", system-ui, sans-serif;
-  font-optical-sizing: auto;
+  font: 1.125rem/1.6 "Aspekta", system-ui, sans-serif;
 }
 
 .perspective-grid {
@@ -102,6 +101,12 @@ a:focus-visible, button:focus-visible {
   gap: clamp(0.35rem, 2vw, 0.85rem);
 }
 
+.intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 h1 {
   font-size: clamp(2.35rem, 6vw, 3.25rem);
   font-weight: 700;
@@ -139,7 +144,7 @@ h1 {
 
 .role-note {
   max-width: 58ch;
-  margin-block: 0.85rem 1.1rem;
+  margin-block: 0.85rem 0.75rem;
   color: var(--muted);
   font-size: 1.2rem;
   line-height: 1.5;
@@ -151,27 +156,38 @@ h1 {
 }
 
 .resume-button {
+  --resume-border: var(--rule);
   display: inline-grid;
   min-height: 2.75rem;
+  box-sizing: border-box;
   place-items: center;
-  padding-inline: 1rem;
+  padding-inline: 0.8rem;
+  border: 1px solid transparent;
   border-radius: 0.5rem;
-  background: var(--text);
-  color: var(--paper);
+  background:
+    linear-gradient(var(--paper), var(--paper)) padding-box,
+    linear-gradient(110deg, var(--resume-border), var(--rule) 75%) border-box;
   font-size: 0.9375rem;
   font-weight: 650;
   text-decoration: none;
 }
 
-.resume-button:hover {
-  background: var(--muted);
-  color: var(--paper);
+.resume-button:is(:hover, :focus-visible) {
+  --resume-border: light-dark(#737984, #92979f);
+  color: var(--text);
 }
 
 .page section {
-  margin-block-start: clamp(2.25rem, 5vw, 3.5rem);
-  border-block-start: 1px solid var(--rule);
-  padding-block-start: clamp(1.25rem, 3vw, 1.75rem);
+  margin-block-start: clamp(1.85rem, 4.5vw, 2.65rem);
+}
+
+.page section::before {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-block-end: 0.65rem;
+  background: linear-gradient(90deg, light-dark(#686f79, #8b929e), transparent);
 }
 
 h2 {
@@ -298,5 +314,9 @@ h2 {
 @media (forced-colors: active) {
   .perspective-grid {
     display: none;
+  }
+
+  .resume-button {
+    border-color: ButtonText;
   }
 }
