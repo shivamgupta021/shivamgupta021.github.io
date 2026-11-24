@@ -55,39 +55,11 @@ a:focus-visible, button:focus-visible {
   padding-inline: var(--gutter);
 }
 
-.utility,
-.utility-controls,
-.time-zone {
-  display: flex;
-  align-items: center;
-}
-
 .utility {
+  display: flex;
+  justify-content: flex-end;
   max-width: 47rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
   padding-block-start: clamp(0.75rem, 3vw, 1.85rem);
-  color: var(--muted);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.time-zone {
-  gap: 0.35rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.time-zone span {
-  margin-inline-end: 0.3rem;
-}
-
-.utility abbr {
-  text-decoration: none;
-}
-
-.utility-controls {
-  gap: 0.95rem;
 }
 
 .page {
